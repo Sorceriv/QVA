@@ -1,9 +1,13 @@
 # qva
 Qualys Vulnerability Assistant
 
--24/04/2024
+-25/04/2024
 
 --
+
+-24/04/2024
+
+--Upgraded data preprocessing
 
 -23/04/2024
 
