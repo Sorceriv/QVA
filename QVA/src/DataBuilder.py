@@ -5,6 +5,7 @@
 #SKLearn and Keras Model Builders
 #CHATGPT API
 #Text similarity levenshtein python
+#Text augmentation - NLPAUG
 
 import pandas as pd
 import numpy as np
@@ -34,11 +35,47 @@ class DataBuilder:
         self.df = self.df.reset_index(drop=True)
         for header in self.df.columns:
             self.df[header] = self.df[header].astype(str).apply(self.clean_data)
+    
+    def combineColumns(self, newColumnName, columnNames):
+        self.df[newColumnName] = ""
+        for columnName in columnNames:
+            self.df[newColumnName] += ' ' + self.df[columnName]
+
+    def augmentData(self):
+        pass
+    
+    def setInput(self, columnName):
+        try:
+            self.inputData = self.df[columnName]
+        except:
+            print("Invalid column name")
+    
+    def getInput(self):
+        try:
+            return self.inputData
+        except:
+            print("Input has not been set. Please set input first using <data>.setInput('Name of your column')")
+
+    def setLabel(self, columnName):
+        try:
+            self.labelData = self.df(columnName)
+        except:
+            print("Invalid column name")
+
+    def getLabel(self):
+        try:
+            return self.labelData
+        except:
+            print("Label has not been set. Please set label first using <data>.setLabel('Name of your column')")
+
+
+
 
 
 def main():
     data = DataBuilder('QVA/src/assets/dataset.xlsx')
     data.preprocess()
-    print(data.df)
+    data.combineColumns('Input', ['OS', 'Title', 'QID', 'Port', 'Threat'])
+    print(data.df['Input'])
 
 main()
