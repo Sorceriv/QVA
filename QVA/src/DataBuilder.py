@@ -1,4 +1,4 @@
-#Use modules
+#Use modules - import this as module in main py file
 #DataBuilder ModelBuilder Text Similarity GPT
 #Flask CORS API
 #React Front-end + TypeScript + Framermotion
@@ -12,6 +12,7 @@ import numpy as np
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 import re
+import nlpaug.augmenter.word as naw
 
 STOPWORDS = set(stopwords.words('english'))
 REPLACE_BY_SPACE_RE = re.compile('[/(){}\\[\\]\\|@,;]')
@@ -30,8 +31,14 @@ class DataBuilder:
         text = ' '.join(word for word in text.split() if word not in STOPWORDS)
         return text
     
+    def dropNa(self, columnNames):
+        self.df.dropna(subset = columnNames, inplace=True)
+
+    def replaceNa(self, columnNames):
+        for columnName in columnNames:
+            self.df[columnName] = self.df[columnName].fillna('')
+
     def preprocess(self):
-        self.df = self.df.dropna()
         self.df = self.df.reset_index(drop=True)
         for header in self.df.columns:
             self.df[header] = self.df[header].astype(str).apply(self.clean_data)
@@ -41,8 +48,14 @@ class DataBuilder:
         for columnName in columnNames:
             self.df[newColumnName] += ' ' + self.df[columnName]
 
-    def augmentData(self):
-        pass
+    def augmentData(self, columnName, num):
+        aug = naw.SynonymAug()
+        for index, row in self.df.iterrows():
+            augmentedRows = aug.augment(row[columnName], num)
+            for augmentedRow in augmentedRows:
+                newRow = row.copy()
+                newRow[columnName] = augmentedRow
+                self.df = pd.concat([self.df, pd.DataFrame([newRow])], ignore_index=True)
     
     def setInput(self, columnName):
         try:
@@ -74,8 +87,10 @@ class DataBuilder:
 
 def main():
     data = DataBuilder('QVA/src/assets/dataset.xlsx')
+    data.replaceNa(['OS', 'Title', 'QID', 'Port', 'Threat'])
     data.preprocess()
     data.combineColumns('Input', ['OS', 'Title', 'QID', 'Port', 'Threat'])
+    # data.augmentData('Input', 5)
     print(data.df['Input'])
 
 main()
