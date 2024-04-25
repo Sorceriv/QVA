@@ -1,9 +1,13 @@
 # qva
 Qualys Vulnerability Assistant
 
--25/04/2024
+-26/04/2024
 
 --
+
+-25/04/2024
+
+-- Updated DataBuilder Class, added augmentation and removal of NaNs
 
 -24/04/2024
 
