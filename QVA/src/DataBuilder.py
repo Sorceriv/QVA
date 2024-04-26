@@ -1,12 +1,3 @@
-#Use modules - import this as module in main py file
-#DataBuilder ModelBuilder Text Similarity GPT
-#Flask CORS API
-#React Front-end + TypeScript + Framermotion
-#SKLearn and Keras Model Builders
-#CHATGPT API
-#Text similarity levenshtein python
-#Text augmentation - NLPAUG
-
 import pandas as pd
 import numpy as np
 from nltk.corpus import stopwords
@@ -71,7 +62,7 @@ class DataBuilder:
 
     def setLabel(self, columnName):
         try:
-            self.labelData = self.df(columnName)
+            self.labelData = self.df[columnName]
         except:
             print("Invalid column name")
 
@@ -80,17 +71,3 @@ class DataBuilder:
             return self.labelData
         except:
             print("Label has not been set. Please set label first using <data>.setLabel('Name of your column')")
-
-
-
-
-
-def main():
-    data = DataBuilder('QVA/src/assets/dataset.xlsx')
-    data.replaceNa(['OS', 'Title', 'QID', 'Port', 'Threat'])
-    data.preprocess()
-    data.combineColumns('Input', ['OS', 'Title', 'QID', 'Port', 'Threat'])
-    # data.augmentData('Input', 5)
-    print(data.df['Input'])
-
-main()
