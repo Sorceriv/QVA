@@ -1,13 +1,17 @@
 # qva
 Qualys Vulnerability Assistant
 
--26/04/2024
+-27/04/2024
 
 --
 
+-26/04/2024
+
+--Added main file and ModelBuilder Class. Model now works, custom inputs and better reports next
+
 -25/04/2024
 
--- Updated DataBuilder Class, added augmentation and removal of NaNs
+--Updated DataBuilder Class, added augmentation and removal of NaNs
 
 -24/04/2024
 
