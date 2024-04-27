@@ -1,9 +1,13 @@
 # qva
 Qualys Vulnerability Assistant
 
--27/04/2024
+-28/04/2024
 
 --
+
+-27/04/2024
+
+--Added LearningCurve and ConfusionMatrix, also added dataFrequency method in DataBuilder class to remove underrepresented data under certain threshold
 
 -26/04/2024
 
