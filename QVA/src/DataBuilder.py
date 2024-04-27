@@ -39,6 +39,19 @@ class DataBuilder:
         for columnName in columnNames:
             self.df[newColumnName] += ' ' + self.df[columnName]
 
+    def dataFrequency(self, columnName, num):
+        #Remove underrepresented data
+        threshold = num
+        try:
+            value_counts = self.df[columnName].value_counts() # Entire DataFrame 
+            to_remove = value_counts[value_counts < threshold].index
+            self.df[columnName].replace(to_remove, np.nan, inplace=True)
+            self.df.dropna(subset = columnName, inplace=True)
+            # print(self.df[columnName].value_counts())
+        except:
+            print("Invalid column name")
+        pass
+
     def augmentData(self, columnName, num):
         aug = naw.SynonymAug()
         for index, row in self.df.iterrows():
