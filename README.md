@@ -1,9 +1,13 @@
 # qva
 Qualys Vulnerability Assistant
 
--28/04/2024
+-29/04/2024
 
 --
+
+-28/04/2024
+
+--Model can now be tested. Model now saves.
 
 -27/04/2024
 
