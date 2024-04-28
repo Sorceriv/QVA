@@ -29,10 +29,12 @@ class DataBuilder:
         for columnName in columnNames:
             self.df[columnName] = self.df[columnName].fillna('')
 
-    def preprocess(self):
+    def preprocess(self, columnNames):
         self.df = self.df.reset_index(drop=True)
-        for header in self.df.columns:
-            self.df[header] = self.df[header].astype(str).apply(self.clean_data)
+        for columnName in columnNames:
+            self.df[columnName] = self.df[columnName].astype(str).apply(self.clean_data)
+        # for header in self.df.columns: # All columns
+        #     self.df[header] = self.df[header].astype(str).apply(self.clean_data)
     
     def combineColumns(self, newColumnName, columnNames):
         self.df[newColumnName] = ""
