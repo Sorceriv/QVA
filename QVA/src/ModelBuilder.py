@@ -20,11 +20,11 @@ class ModelBuilder():
 
         #Save model and dictionary to filedirectory, check if exists if exists then load if none then create new, add new parameter of filedicrectory + name
 
-        self.model = self.load(filePath, modelName)  if self.load(filePath, modelName) else make_pipeline(CountVectorizer(), modelType)
+        self.model = self.load(filePath, modelName) if self.load(filePath, modelName) else make_pipeline(CountVectorizer(), modelType)
 
         self.train_data, self.test_data, self.train_labels, self.test_labels = self.load(filePath, modelName + "_datadict") if self.load(filePath, modelName + "_datadict") else train_test_split(self.features, self.labels, test_size=0.2, random_state=42)
-        self.model_fit = self.model.fit(self.train_data, self.train_labels)
-        self.model_predictions = self.model_fit.predict(self.test_data)
+        self.model_fit =  "" if self.load(filePath, modelName + "_datadict") else self.model.fit(self.train_data, self.train_labels)
+        self.model_predictions = self.model.predict(self.test_data) if self.load(filePath, modelName) else self.model_fit.predict(self.test_data) #Can transfer to methods needed to improve initialization speed
         self.save(filePath, modelName)
 
     def printAccuracy(self):

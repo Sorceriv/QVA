@@ -47,7 +47,8 @@ class DataBuilder:
         try:
             value_counts = self.df[columnName].value_counts() # Entire DataFrame 
             to_remove = value_counts[value_counts < threshold].index
-            self.df[columnName].replace(to_remove, np.nan, inplace=True)
+            # self.df[columnName].replace(to_remove, np.nan, inplace=True) # Victim of deprecation :( see issue, inplace now returns a copy if used this way
+            self.df.replace({columnName: to_remove}, np.nan, inplace=True) # fix for above :D
             self.df.dropna(subset = columnName, inplace=True)
             # print(self.df[columnName].value_counts())
         except:
