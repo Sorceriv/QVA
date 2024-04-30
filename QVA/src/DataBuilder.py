@@ -4,6 +4,7 @@ from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 import re
 import nlpaug.augmenter.word as naw
+import pickle
 
 STOPWORDS = set(stopwords.words('english'))
 REPLACE_BY_SPACE_RE = re.compile('[/(){}\\[\\]\\|@,;]')
@@ -11,7 +12,18 @@ BAD_SYMBOLS_RE = re.compile('[^0-9a-z #+_]')
 
 class DataBuilder:
     def __init__(self, fileName):
-        self.df = pd.read_excel(fileName)
+        self.fileName = fileName
+        self.df = pd.read_pickle(fileName + ".pkl") if self.loadData() else pd.read_excel(fileName + ".xlsx")
+
+    def saveData(self):
+        self.df.to_pickle(self.fileName + ".pkl")
+
+    def loadData(self):
+        try:
+            pd.read_pickle(self.fileName + ".pkl")
+            return True
+        except:
+            return False
     
     def clean_data(self, text):
         text = text.lower()

@@ -3,7 +3,7 @@ Qualys Vulnerability Assistant
 
 -29/04/2024
 
---Will fix issue in issues regarding depreciation of usage of pandas methods
+--Fixed issue regarding the deprecation of pandas method. Added text similarity. Updated the saving and loading logic of the model.
 
 -28/04/2024
 

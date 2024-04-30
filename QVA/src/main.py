@@ -16,7 +16,7 @@ from TextSimilarity import *
 def main():
     # #New Data and  Model
     # #Data - Maybe save this as pickle for text similarity dictionary
-    # data = DataBuilder('QVA/src/assets/dataset.xlsx')
+    # data = DataBuilder('QVA/src/assets/dataset')
     # data.replaceNa(['OS', 'Title', 'QID', 'Port', 'Threat'])
     # data.preprocess(['OS', 'Title', 'QID', 'Port', 'Threat'])
     # data.combineColumns('Input', ['OS', 'Title', 'QID', 'Port'])
@@ -27,6 +27,7 @@ def main():
 
     # data.setInput('Input')
     # data.setLabel('Solution')
+    # data.saveData();
     
     # #Model - remove input and labels if loading model or add random text or data, maybe separate save and load features from constructor
     # #Currently only works for single-output classification, will add multioutput using multioutputclassifier if needed
@@ -40,8 +41,10 @@ def main():
 
 
 
-    #Loaded Model/s
+    #Loaded Data and Model/s
     #With augmented data
+    data = DataBuilder('QVA/src/assets/dataset')
+
     model = ModelBuilder(
         "SVM Qualys Model", 
         LinearSVC(), 
@@ -59,11 +62,14 @@ def main():
 
 
     #Add Text Similarity - Maybe implement some kind of choices depending on similarity score before passing to GPT or if gap between first and second text is high then do this. OR pass to gpt and let gpt do the prompt so it will remain conversational.
-    # print(checkSimilarity("Apache Log4j Denial of Service (DOS) Vulnerability (Log4Shell)", data.df['Input']))
-    print(checkSimilarity("Apache Log4j Denial of Service (DOS) Vulnerability (Log4Shell)", ["Apache issue man"]))
+    
+    # print(checkSimilarity("Apache Log4j Denial of Service (DOS) Vulnerability (Log4Shell)", ["Apache issue man"]))
+    print(checkSimilarity("Apache Log4j Denial of Service (DOS) Vulnerability (Log4Shell)", data.df['Input']))
+    
 
     #GPT responses - Get API key and plan if you are going to let GPT handle text similarity responses
+    
 
-    #Front-end API
+    #Front-end API connection (CORS)
 
 main()
