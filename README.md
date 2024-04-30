@@ -1,6 +1,10 @@
 # qva
 Qualys Vulnerability Assistant
 
+-30/04/2024
+
+--Added front-end but a lot of missing stuffs like float on role should not be float. Added textsimilarity as well as gpt model(doesn't work currently due to API key not being free anymore. Save and load for dataset
+
 -29/04/2024
 
 --Fixed issue regarding the deprecation of pandas method. Added text similarity. Updated the saving and loading logic of the model.
