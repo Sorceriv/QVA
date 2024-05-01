@@ -1,6 +1,10 @@
 # qva
 Qualys Vulnerability Assistant
 
+-01/05/2024
+
+--Added frontend chatdialogue component
+
 -30/04/2024
 
 --Added front-end but a lot of missing stuffs like float on role should not be float. Added textsimilarity as well as gpt model(doesn't work currently due to API key not being free anymore. Save and load for dataset
