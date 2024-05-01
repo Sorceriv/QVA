@@ -10,7 +10,13 @@ function ChatBox() {
                 </div>
                 <div className="chat-area">
                     {/* <ChatDialogue /> */}
-                    <ChatDialogue role={"user"} text="HAHAHAHA"/>
+                    <ChatDialogue role={"user"} message="HAHAHAHAHAHAHAHA"/>
+                    <ChatDialogue role={"bot"} message="HAHAHAHA"/>
+                    <ChatDialogue role={"user"} message="HAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHA"/>
+                    <ChatDialogue role={"user"} message="HAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHA"/>
+                    <ChatDialogue role={"bot"} message="HAHAHAHA"/>
+                    <ChatDialogue role={"user"} message="HAHAHAHAHAHAHAHA"/>
+                    <ChatDialogue role={"user"} message="HAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHA"/>
                 </div>
                 <div className="input-area">
 

@@ -1,5 +1,7 @@
 from openai import OpenAI
 
+# Currently can't work, ran out of free credits :<
+
 client = OpenAI(api_key="")
 
 def chat(prompt):

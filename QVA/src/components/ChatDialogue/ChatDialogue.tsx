@@ -9,9 +9,11 @@ interface Props {
 function ChatDialogue({role, message}: Props) {
     return (
         <>
-            <div style={{float: role=="bot" ? "left" : "right"}} className="dialogue-container">
-                <span>{message}</span>
-            </div>
+
+        <div className={"dialogue-container " + (role == "bot" ? "left" : "right")}>
+            {message}
+        </div>
+
         </>
     )
 }

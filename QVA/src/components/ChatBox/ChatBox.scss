@@ -17,11 +17,13 @@
     }
 
     .chat-area {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
         height: 375px;
-        width: 100%;
         border-bottom: 1px solid rgba(100,100,100,0.5);
         overflow-y: scroll;
-        padding: 15px 20px 0px 15px;
+        padding: 15px 25px 15px 25px;
     }
 
     .chat-area::-webkit-scrollbar {

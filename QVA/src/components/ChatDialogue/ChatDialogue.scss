@@ -1,6 +1,18 @@
 .dialogue-container {
     background-color: purple;
-    width: 50%;
-    height: 75px;
+    max-width: 50%;
+
     border-radius: 10px;
+    word-wrap: break-word;
+    padding: 15px;
+}
+
+.right {
+    margin-left: auto;
+    background-color: purple;
+}
+
+.left {
+    margin-right: auto;
+    background-color: grey;
 }
