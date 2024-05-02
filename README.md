@@ -1,6 +1,10 @@
 # qva
 Qualys Vulnerability Assistant
 
+-02/05/2024
+
+--Added close open animation (to improve), transferred chat dialogues to object array for easier time in the future for API calls. Will add open close animations and draggable chatbox.
+
 -01/05/2024
 
 --Added frontend chatdialogue component
