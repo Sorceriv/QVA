@@ -1,5 +1,5 @@
 .dialogue-container {
-    background-color: purple;
+    background-color: var(--secondary-color);
     max-width: 50%;
 
     border-radius: 10px;
@@ -9,7 +9,7 @@
 
 .right {
     margin-left: auto;
-    background-color: purple;
+    background-color: var(--secondary-color);
 }
 
 .left {

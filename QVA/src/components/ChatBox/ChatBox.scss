@@ -1,15 +1,16 @@
 .main-chatbox-container {
     background-color: white;
     height: 500px;
-    width: 750px;
+    width: 500px;
     position: fixed;
-    bottom: 50px;
-    right: 75px;
+    bottom: 75px;
+    right: 100px;
     z-index: 0;
     border-radius: 25px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    transition: 0.5s;
     .top-area-container {
         background-color: var(--primary-color);
         width: 100%;

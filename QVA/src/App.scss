@@ -1,17 +1,4 @@
 :root {
-    --primary-color: rgba(255,70,70,1);
-}
-
-body::-webkit-scrollbar {
-    width: 5px;
-    
-  }
-   
-body::-webkit-scrollbar-track {
-
-}
-
-body::-webkit-scrollbar-thumb {
-    background-color: darkgrey;
-    border-radius: 5px;
+    --primary-color: purple;
+    --secondary-color: blueviolet;
 }
