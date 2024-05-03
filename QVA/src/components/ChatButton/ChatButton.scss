@@ -7,4 +7,17 @@
     right: 25px;
     background-color: var(--primary-color);
     z-index: 5;
+    transition: 0.5s;
+    outline: none;
+    border: 0;
+}
+
+.chat-button:hover {
+    border: 0;
+    background-color: var(--secondary-color);
+}
+
+.chat-button:focus {
+    outline: none;
+    border: 0;
 }

@@ -42,7 +42,10 @@ function ChatBox({opened}: Props) {
                     ))}
                 </div>
                 <div className="input-area">
-
+                    <form>
+                        <input type="text"></input>
+                        <input type="submit" value="→"></input>
+                    </form>
                 </div>
             </div>
         </>
