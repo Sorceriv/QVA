@@ -1,9 +1,13 @@
 # qva
 Qualys Vulnerability Assistant
 
+-03/05/2024
+
+--Added text input and submit form, will connect with CORS, and will add open-close animations and draggable chatbox.
+
 -02/05/2024
 
---Added close open animation (to improve), transferred chat dialogues to object array for easier time in the future for API calls. Will add open close animations and draggable chatbox.
+--Added close open animation (to improve), transferred chat dialogues to object array for easier time in the future for API calls. 
 
 -01/05/2024
 
