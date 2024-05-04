@@ -1,6 +1,8 @@
 import './ChatBox.scss';
 import ChatDialogue from './../ChatDialogue/ChatDialogue';
 
+import axios from "axios";
+
 interface Props {
     opened: boolean,
 }
@@ -29,6 +31,23 @@ function ChatBox({opened}: Props) {
             message: "Thanks.",
         },
     ]
+
+    const handleSubmit = async(event: any) => {
+        event.preventDefault();
+
+        const formData = new FormData();
+        //formData.append()
+        //Add user chat to conversaion use useeffect for interval and typing effect
+        try {
+            axios.post("http://localhost:5173/upload", formData).then((res) => {
+                console.log(res.data.message);
+                //Add bot response to conversation useeffect for interval and typing effect
+            });
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    
     return (
         <>
             <div className="main-chatbox-container" style={opened ? {width: "500px", height: "500px"} : {width: "0px", height: "0px"}}>
@@ -42,9 +61,9 @@ function ChatBox({opened}: Props) {
                     ))}
                 </div>
                 <div className="input-area">
-                    <form>
+                    <form onSubmit={handleSubmit}>
                         <input type="text"></input>
-                        <input type="submit" value="→"></input>
+                        <input type="submit" value="→"></input> {/**ajax submission, find reference used in cgi*/}
                     </form>
                 </div>
             </div>
