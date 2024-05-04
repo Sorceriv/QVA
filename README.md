@@ -1,6 +1,10 @@
 # qva
 Qualys Vulnerability Assistant
 
+-04/05/2024
+
+--Added axios handleSubmit for connection between python model and react using CORS and Axios, to fix.
+
 -03/05/2024
 
 --Added text input and submit form, will connect with CORS, and will add open-close animations and draggable chatbox.
