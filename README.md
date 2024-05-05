@@ -1,6 +1,10 @@
 # qva
 Qualys Vulnerability Assistant
 
+-05/05/2024
+
+--Axios and CORS now working, will integrate to react front-end using useEffect and useStates
+
 -04/05/2024
 
 --Added axios handleSubmit for connection between python model and react using CORS and Axios, to fix.
