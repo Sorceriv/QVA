@@ -2,6 +2,7 @@ import './ChatBox.scss';
 import ChatDialogue from './../ChatDialogue/ChatDialogue';
 
 import axios from "axios";
+import { useEffect } from 'react';
 
 interface Props {
     opened: boolean,
@@ -30,24 +31,36 @@ function ChatBox({opened}: Props) {
             role: "user",
             message: "Thanks.",
         },
-    ]
+    ];
+
+    // useEffect(() => {
+    //     fetch("http://localhost:5000")
+    //       .then((res) => res.json())
+    //       .then((data) => {
+    //         console.log(data);
+    //         //setData(data.message);
+    //       });
+    // }, []);
 
     const handleSubmit = async(event: any) => {
         event.preventDefault();
 
         const formData = new FormData();
-        //formData.append()
+        console.log(event.target["user-text"].value);
+
+        formData.append("text", event.target["user-text"].value);
+
         //Add user chat to conversaion use useeffect for interval and typing effect
         try {
-            axios.post("http://localhost:5173/upload", formData).then((res) => {
-                console.log(res.data.message);
+            axios.post("http://localhost:5000/upload", formData).then((res: any) => {
+                console.log("MESSAGE: " + res.data.message);
                 //Add bot response to conversation useeffect for interval and typing effect
             });
         } catch (error) {
-            console.log(error);
+            console.log("ERROR: " + error);
         }
     }
-    
+
     return (
         <>
             <div className="main-chatbox-container" style={opened ? {width: "500px", height: "500px"} : {width: "0px", height: "0px"}}>
@@ -57,12 +70,12 @@ function ChatBox({opened}: Props) {
                 <div className="chat-area">
                     {/* <ChatDialogue /> */}
                     {conversation.map((item, key) => (
-                        <ChatDialogue role={item.role} message={item.message}/>
+                        <ChatDialogue key={key} role={item.role} message={item.message}/>
                     ))}
                 </div>
                 <div className="input-area">
                     <form onSubmit={handleSubmit}>
-                        <input type="text"></input>
+                        <input name="user-text" type="text"></input>
                         <input type="submit" value="→"></input> {/**ajax submission, find reference used in cgi*/}
                     </form>
                 </div>
