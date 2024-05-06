@@ -1,6 +1,10 @@
 # qva
 Qualys Vulnerability Assistant
 
+-06/05/2024
+
+--Added to frontend can now chat using front-end, added comments line 67-69 chatbox.tsx on what to fix next
+
 -05/05/2024
 
 --Axios and CORS now working, will integrate to react front-end using useEffect and useStates
