@@ -96,7 +96,8 @@ def upload():
         filePath="C:/Users/eddz9/Desktop/QVA/QVA/QVA/src/models/"
     )
 
-    prediction = model.predict([text])['prediction'][0]
+
+    prediction = model.predict([text])['prediction'][0]  #Already cleans input text, built-in in function check ModelBuilder.py predict method
     print(text)
     print(prediction)
     return jsonify({"message": prediction})

@@ -2,7 +2,8 @@ import './ChatBox.scss';
 import ChatDialogue from './../ChatDialogue/ChatDialogue';
 
 import axios from "axios";
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { resolvePath } from '../../../../../../../node_modules/react-router-dom/dist/index';
 
 interface Props {
     opened: boolean,
@@ -35,6 +36,7 @@ function ChatBox({opened}: Props) {
 
     const [conversation, setConversation] = useState([] as any);
     const [message, setMessage] = useState({role: "bot", message:"Hi, tell me your problems on your machine."})
+    const endScope = useRef(null as any);
     // useEffect(() => {
     //     fetch("http://localhost:5000")
     //       .then((res) => res.json())
@@ -43,6 +45,7 @@ function ChatBox({opened}: Props) {
     //         //setData(data.message);
     //       });
     // }, []);
+   
 
     const handleSubmit = async(event: any) => {
         event.preventDefault();
@@ -51,9 +54,10 @@ function ChatBox({opened}: Props) {
         console.log(event.target["user-text"].value);
 
         formData.append("text", event.target["user-text"].value);
-
+        
         //Add user chat to conversaion use useeffect for interval and typing effect
-        setConversation([...conversation, {role: "user", message: event.target["user-text"].value}])
+        setMessage({role: "user", message: event.target["user-text"].value})
+        event.target["user-text"].value = "";
         try {
             axios.post("http://localhost:5000/upload", formData).then((res: any) => {
                 console.log("MESSAGE: " + res.data.message);
@@ -63,13 +67,21 @@ function ChatBox({opened}: Props) {
         } catch (error) {
             console.log("ERROR: " + error);
         }
+        
     }
-    //add automatic scrolldown on new chat
-    //fix empty message starter/fix errors when emptying fixed using as any but find a more readable and optimized solution
-    //Empty textbox when typing
     
+    
+
     useEffect(() => {
-        setConversation([...conversation, message]);
+        if(message.role == "bot") {
+            setConversation([...conversation, {role: message.role, message: '...'}]);
+            setTimeout(() => {setConversation([...conversation, message]); endScope.current.scrollIntoView();}, 500);
+        }
+        else {
+            setConversation([...conversation, message]);
+            try {endScope.current.scrollIntoView();} catch(e) {}
+        }
+        
     }, [message]);
 
     return (
@@ -78,11 +90,12 @@ function ChatBox({opened}: Props) {
                 <div className="top-area-container">
 
                 </div>
-                <div className="chat-area">
+                <div  className="chat-area">
                     {/* <ChatDialogue /> */}
                     {conversation.map((item, key) => (
                         <ChatDialogue key={key} role={item.role} message={item.message}/>
                     ))}
+                    <div ref={endScope} id="end"></div>
                 </div>
                 <div className="input-area">
                     <form onSubmit={handleSubmit}>

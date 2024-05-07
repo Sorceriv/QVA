@@ -25,6 +25,12 @@
         border-bottom: 1px solid rgba(100,100,100,0.5);
         overflow-y: scroll;
         padding: 15px 25px;
+        scroll-behavior: smooth;
+        #end {
+            position: relative;
+            // padding-top: 40px;
+            // bottom: 0;
+        }
     }
 
     .chat-area::-webkit-scrollbar {
