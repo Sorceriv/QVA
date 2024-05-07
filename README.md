@@ -1,6 +1,10 @@
 # qva
 Qualys Vulnerability Assistant
 
+-07/05/2024
+
+--Fixed, final commit. Moving on to next project
+
 -06/05/2024
 
 --Added to frontend can now chat using front-end, added comments line 67-69 chatbox.tsx on what to fix next
